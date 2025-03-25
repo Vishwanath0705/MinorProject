@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://unpkg.com/lucide-static/font/lucide.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="sentiment-card"> 
+            <div class="card-content">
+                <div class="header">
+                    <i class="lucide-message-square icon-pulse"></i>
+                    <h1>Multilingual Sentiment Analysis</h1>
+                </div>
+
+                <div class="input-container">
+                    <textarea 
+                        rows="4"
+                        placeholder="Enter your text here for sentiment analysis..."
+                        id="textInput"
+                    ></textarea>
+                    <i class="lucide-sparkles sparkle-icon"></i>
+                </div>
+
+                <button id="analyzeBtn">
+                    <span class="button-content">
+                        <i class="lucide-sparkles"></i>
+                        Analyze Sentiment
+                    </span>
+                    <span class="loader hidden">
+                        <i class="lucide-loader-2"></i>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

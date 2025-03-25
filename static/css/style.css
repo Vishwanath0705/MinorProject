@@ -1,0 +1,252 @@
+:root {
+    --indigo-50: #eef2ff;
+    --indigo-100: #e0e7ff;
+    --indigo-600: #4f46e5;
+    --indigo-700: #4338ca;
+    --purple-50: #faf5ff;
+    --purple-600: #9333ea;
+    --purple-700: #7e22ce;
+    --gray-50: #f9fafb;
+    --gray-200: #e5e7eb;
+    --gray-400: #9ca3af;
+    --gray-600: #4b5563;
+    --green-500: #22c55e;
+    --red-500: #ef4444;
+    --yellow-500: #eab308;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--indigo-50), var(--purple-50));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.container {
+    width: 100%;
+    max-width: 42rem;
+}
+
+.sentiment-card {
+    position: relative;
+    background: white;
+    border-radius: 1.5rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sentiment-card::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    z-index: -1;
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.5), rgba(147, 51, 234, 0.5));
+    border-radius: inherit;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+}
+
+.sentiment-card:hover::before {
+    opacity: 1;
+    inset: -4px;
+}
+
+.card-content {
+    padding: 2rem;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.header h1 {
+    font-size: 1.875rem;
+    font-weight: bold;
+    background: linear-gradient(to right, var(--indigo-600), var(--purple-600));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    border: 2px solid var(--indigo-100);
+    font-size: 1rem;
+    line-height: 1.5;
+    resize: none;
+    transition: all 0.3s;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--indigo-300);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.sparkle-icon {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    color: var(--indigo-300);
+    opacity: 0.5;
+}
+
+button {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    border: none;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(to right, var(--indigo-600), var(--purple-600));
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+button:not(:disabled):hover {
+    background: linear-gradient(to right, var(--indigo-700), var(--purple-700));
+    transform: scale(1.02);
+}
+
+button:not(:disabled):active {
+    transform: scale(0.98);
+}
+
+button:disabled {
+    background: var(--gray-400);
+    cursor: not-allowed;
+}
+
+.button-content, .loader {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.hidden {
+    display: none;
+}
+
+#resultSection {
+    margin-top: 2rem;
+    animation: slideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.result-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.result-header h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.result-content {
+    background: var(--gray-50);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+}
+
+.result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.label {
+    color: var(--gray-600);
+}
+
+.value {
+    font-weight: 600;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 0.5rem;
+    background: var(--gray-200);
+    border-radius: 9999px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(to right, var(--indigo-600), var(--purple-600));
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 0;
+}
+
+.icon-pulse {
+    animation: iconPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    color: var(--indigo-600);
+}
+
+
+@keyframes iconPulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(0.95);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.loader i {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }   
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.sentiment-positive { color: var(--green-500); }
+.sentiment-negative { color: var(--red-500); }
+.sentiment-neutral { color: var(--yellow-500); }
+
